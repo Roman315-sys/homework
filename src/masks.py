@@ -17,6 +17,7 @@ def get_mask_card_number(argument: str) -> str:
 
 
 def get_mask_account(argument: str) -> str:
-    result = argument[-4:]
-    return f'**{result}'
+    last_digits = argument[-4:]
+    stars = "*" * 2
+    return stars + last_digits
 
