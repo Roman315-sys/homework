@@ -1,6 +1,6 @@
 def get_mask_card_number(argument: str) -> str:
     """Маскирует номер карты, показывая первые 6 и последние 4 цифры."""
-    result   = []
+    result = []
     for i, char in enumerate(argument):
         if i < 6:
             result.append(char)
@@ -17,7 +17,7 @@ def get_mask_card_number(argument: str) -> str:
 
 
 def get_mask_account(argument: str) -> str:
+    """Маскирует номер счета, показывая паследние 4 цифры."""
     last_digits = argument[-4:]
     stars = "*" * 2
     return stars + last_digits
-
