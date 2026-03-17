@@ -7,14 +7,12 @@ from src.masks import get_mask_card_number
 def mask_account_card(data: str) -> str:
     """Маскирует номер карты или счета в зависимости от типа."""
     new_data = data.split()
-    if len(new_data) != 2:
+    if new_data[0] == "Счет":
+        result = get_mask_account(new_data[-1])
+        return f'{new_data[0]}: {result}'
+    else:
         result = get_mask_card_number(new_data[-1])
-    if len(new_data) == 2:
-        if new_data[0] == "Счет":
-            result = get_mask_account(new_data[-1])
-        else:
-            result = get_mask_card_number(new_data[-1])
-    return result
+        return f'{" ".join(new_data[:-1])}: {result}'
 
 
 def get_date(date_string: str) -> str:
