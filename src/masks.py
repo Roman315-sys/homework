@@ -9,11 +9,7 @@ def get_mask_card_number(argument: str) -> str:
         else:
             result.append("*")
     final = "".join(result)
-    block1 = final[0:4]
-    block2 = final[4:8]
-    block3 = final[8:12]
-    block4 = final[12:16]
-    return f"{block1} {block2} {block3} {block4}"
+    return f"{final[:4]} {final[4:8]} {final[8:12]} {final[12:16]}"
 
 
 def get_mask_account(argument: str) -> str:
