@@ -8,6 +8,20 @@ import pytest
     # Ошибочные сценарии
     ("Visa Platinum 700079228606361","Invalid card number"),
     ("Счет 7365410843013587430","Invalid card number"),
+    ("Visa Platinum","Invalid card number"),
+    ("7365410843013587430","Invalid card number")
 ])
 def test_mask_account_card(card_number, expected):
     assert mask_account_card(card_number) == expected
+
+
+@pytest.mark.parametrize('date, expected', [
+    # Успешные сценарии
+    ("2024-03-11T02:26:18.671407", "11.03.2024"),
+    # Ошибочные сценарии
+    ("2024-03-11T02:26:18.6", "Incorrect date format"),
+    ("202e-03-11T02:26:18.671407", "Incorrect date format"),
+    ("2024--11T02:26:18.671407", "Incorrect date format")
+])
+def test_get_date(date, expected):
+    assert get_date(date) == expected
