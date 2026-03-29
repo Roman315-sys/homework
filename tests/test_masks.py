@@ -1,11 +1,33 @@
 from src.masks import get_mask_card_number, get_mask_account
 import pytest
 
-def tests_get_mask_card_number():
-    """Тест функции которая маскирует номер карты, показывая первые 6 и последние 4 цифры."""
-    assert get_mask_card_number("7000792289606361") == "7000 79** **** 6361"
+@pytest.mark.parametrize('card_number, expected', [
+    # Успешные сценарии
+    ("7000792289606361", "7000 79** **** 6361"),
+    ("1234567812345678", "1234 56** **** 5678"),
+    # Ошибочные сценарии
+    ("000792289606361", "Invalid card number"),
+    ("70007922896063611", "Invalid card number"),
+    ("abcd123456789012", "Invalid card number"),
+    ("", "Invalid card number")
+])
+def test_get_mask_card_number(card_number, expected):
+    assert get_mask_card_number(card_number) == expected
 
 
-def tests_get_mask_account():
+@pytest.mark.parametrize('score_number, exp',[
+    # Успешные сценарии
+    ('73654108430135874305', "**4305"),
+    ('12345678901234561233', "**1233"),
+    ('00000000000000000000', "**0000"),
+    ('11112222333344444444', "**4444"),
+    # Ошибочные сценарии
+    ('12345', "Invalid card number"),
+    ('123456789012345678901', "Invalid card number"),
+    ('abcd123456789012', "Invalid card number"),
+    ("", "Invalid card number"),
+])
+def tests_get_mask_account(score_number, exp):
     """Тест функции которая маскирует номер счета, показывая паследние 4 цифры."""
-    assert get_mask_account("73654108430135874305") == "**4305"
+    assert get_mask_account(score_number) == exp
+

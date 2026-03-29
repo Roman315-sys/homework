@@ -9,10 +9,10 @@ def mask_account_card(data: str) -> str:
     new_data = data.split()
     if new_data[0] == "Счет":
         result = get_mask_account(new_data[-1])
-        return f'{new_data[0]}: {result}'
+        return f'{new_data[0]} {result}'
     else:
         result = get_mask_card_number(new_data[-1])
-        return f'{" ".join(new_data[:-1])}: {result}'
+        return f'{" ".join(new_data[:-1])} {result}'
 
 
 def get_date(date_string: str) -> str:

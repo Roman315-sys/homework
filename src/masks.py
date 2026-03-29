@@ -1,5 +1,11 @@
 def get_mask_card_number(argument: str) -> str:
     """Маскирует номер карты, показывая первые 6 и последние 4 цифры."""
+    # Проверка коректности ввода!
+    if len(argument) != 16:
+        return "Invalid card number"
+    if not argument.isdigit():
+        return "Invalid card number"
+    # Реализация функци!
     result = []
     for i, char in enumerate(argument):
         if i < 6:
@@ -14,6 +20,12 @@ def get_mask_card_number(argument: str) -> str:
 
 def get_mask_account(argument: str) -> str:
     """Маскирует номер счета, показывая паследние 4 цифры."""
+    # Проверка коректности ввода!
+    if len(argument) != 20:
+        return "Invalid card number"
+    if not argument.isdigit():
+        return "Invalid card number"
+    # Реализация функци!
     last_digits = argument[-4:]
     stars = "*" * 2
     return stars + last_digits

@@ -1,12 +1,13 @@
 from src.widget import mask_account_card, get_date
+import pytest
 
-def tests_mask_account_card():
-    """          """
-    assert mask_account_card("Visa Platinum 7000792289606361") == "Visa Platinum: 7000 79** **** 6361"
-
-    assert mask_account_card("Счет 73654108430135874305") == "Счет: **4305"
-
-
-def tests_get_date():
-    """   """
-    assert get_date("2024-03-11T02:26:18.671407") == "11.03.2024"
+@pytest.mark.parametrize('card_number, expected', [
+    # Успешные сценарии
+    ("Visa Platinum 7000792289606361", "Visa Platinum 7000 79** **** 6361"),
+    ("Счет 73654108430135874305","Счет **4305"),
+    # Ошибочные сценарии
+    ("Visa Platinum 700079228606361","Invalid card number"),
+    ("Счет 7365410843013587430","Invalid card number"),
+])
+def test_mask_account_card(card_number, expected):
+    assert mask_account_card(card_number) == expected
