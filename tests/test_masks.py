@@ -11,7 +11,7 @@ import pytest
     ("abcd123456789012", "Invalid card number"),
     ("", "Invalid card number")
 ])
-def test_get_mask_card_number(card_number, expected):
+def test_get_mask_card_number(card_number: str, expected: str) -> None:
     assert get_mask_card_number(card_number) == expected
 
 
@@ -27,7 +27,7 @@ def test_get_mask_card_number(card_number, expected):
     ('abcd123456789012', "Invalid card number"),
     ("", "Invalid card number"),
 ])
-def tests_get_mask_account(score_number, exp):
+def tests_get_mask_account(score_number: str, exp:str) -> None:
     """Тест функции которая маскирует номер счета, показывая паследние 4 цифры."""
     assert get_mask_account(score_number) == exp
 

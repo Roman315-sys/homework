@@ -11,7 +11,7 @@ import pytest
     ("Visa Platinum","Invalid card number"),
     ("7365410843013587430","Invalid card number")
 ])
-def test_mask_account_card(card_number, expected):
+def test_mask_account_card(card_number: str, expected:str) -> None:
     assert mask_account_card(card_number) == expected
 
 
@@ -23,5 +23,5 @@ def test_mask_account_card(card_number, expected):
     ("202e-03-11T02:26:18.671407", "Incorrect date format"),
     ("2024--11T02:26:18.671407", "Incorrect date format")
 ])
-def test_get_date(date, expected):
+def test_get_date(date: str, expected: str) -> None:
     assert get_date(date) == expected
