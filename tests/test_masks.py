@@ -26,8 +26,18 @@ def test_get_mask_card_number(card_number: str, expected: str) -> None:
     ('123456789012345678901', "Invalid card number"),
     ('abcd123456789012', "Invalid card number"),
     ("", "Invalid card number"),
+    ("qwertyuiopasdfghjklz", "Invalid card number")
 ])
 def tests_get_mask_account(score_number: str, exp:str) -> None:
     """Тест функции которая маскирует номер счета, показывая паследние 4 цифры."""
     assert get_mask_account(score_number) == exp
+
+
+def tests_get_mask_card_number(masks_1: str) -> None:
+    assert get_mask_card_number("7000792289606361") == masks_1
+
+
+def test_get_mask_account(masks_2:str) -> None:
+    """Тест функции которая маскирует номер счета, показывая паследние 4 цифры."""
+    assert get_mask_account('73654108430135874305') == masks_2
 
