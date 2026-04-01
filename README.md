@@ -15,3 +15,9 @@ git clone https://github.com/Roman315-sys/homework.git
 ```
 poetry install
 ```
+
+## Тестирование:
+1. Для просмотра результатов тестов используйте команду:
+```
+pytest --cov
+```
