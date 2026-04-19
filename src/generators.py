@@ -1,4 +1,6 @@
-from typing import List, Dict, Generator
+from typing import Dict
+from typing import Generator
+from typing import List
 
 
 def filter_by_currency(transactions: list, currency: str = "USD") -> Generator[Dict, None, None]:
@@ -9,7 +11,7 @@ def filter_by_currency(transactions: list, currency: str = "USD") -> Generator[D
 def transaction_descriptions(transactions: list) -> Generator[str, None, None]:
     """Принимает список словарей и возвращает историю переводов"""
     for i in transactions:
-        d = i.get("description",  "Описание отсутствует")
+        d = i.get("description", "Описание отсутствует")
         if d == "":
             yield "Описание отсутствует"
         else:
