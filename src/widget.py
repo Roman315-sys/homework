@@ -11,7 +11,7 @@ def mask_account_card(data: str) -> str:
         result = get_mask_account(new_data[-1])
         if get_mask_account(new_data[-1]) == "Invalid card number":
             return "Invalid card number"
-        return f'{new_data[0]} {result}'
+        return f"{new_data[0]} {result}"
     else:
         result = get_mask_card_number(new_data[-1])
         if get_mask_card_number(new_data[-1]) == "Invalid card number":
