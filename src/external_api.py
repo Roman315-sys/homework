@@ -5,11 +5,13 @@ import os
 load_dotenv()
 
 def currency_conversion(i: dict) -> float:
-    url_1 = os.getenv("MY_URL")
+    """Функция для перевода любой валюты в рубли"""
+    url = os.getenv("MY_URL")
     api_key = {"apikey":  os.getenv("API_KEY")}
-    amount = i["operationAmount"]["amount"]
-    f = i["operationAmount"]["currency"]["code"]
-    to = "RUB"
-    url = f'{url_1}to={to}&from={f}&amount={amount}'
-    response = requests.get(url, headers=api_key)
+    params = {
+        "amount": i["operationAmount"]["amount"],
+        "from": i["operationAmount"]["currency"]["code"],
+        "to": "RUB"
+    }
+    response = requests.get(url, headers=api_key, params=params)
     return response.json()["result"]
