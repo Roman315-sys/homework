@@ -1,6 +1,7 @@
-from src.external_api import currency_conversion
 import json
 import os
+
+from src.external_api import currency_conversion
 
 
 def load_Json(path: str) -> list:
@@ -8,7 +9,7 @@ def load_Json(path: str) -> list:
     try:
         if os.path.getsize(path) == 0:
             return []
-        with open(path, encoding='utf-8') as json_file:
+        with open(path, encoding="utf-8") as json_file:
             data = json.load(json_file)
             if isinstance(data, list):
                 return data
