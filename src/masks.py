@@ -1,7 +1,7 @@
 import logging
 
 logger = logging.getLogger("masks")
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler("C:/Users/user/PycharmProjects/homework/logs/masks.log", mode="w", encoding="utf-8")
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_formater = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
