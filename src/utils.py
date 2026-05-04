@@ -4,12 +4,11 @@ import os
 
 from src.external_api import currency_conversion
 
-
-logger = logging.getLogger('utils')
+logger = logging.getLogger("utils")
 logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler('C:/Users/user/PycharmProjects/homework/logs/utils.log', mode='w', encoding='utf-8')
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_formater = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler = logging.FileHandler("C:/Users/user/PycharmProjects/homework/logs/utils.log", mode="w", encoding="utf-8")
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+file_formater = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
 
@@ -47,5 +46,5 @@ def sum_conversion(path: str) -> float:
             total += float(item["operationAmount"]["amount"])
         elif item["operationAmount"]["currency"]["code"] != "RUB":
             total += currency_conversion(item)
-    logger.info(f"Подсчёт завершён.")
+    logger.info("Подсчёт завершён.")
     return total
