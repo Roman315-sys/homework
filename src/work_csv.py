@@ -1,8 +1,8 @@
-import pandas as pd
-import logging
 import csv
+import logging
 import os
 
+import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -14,7 +14,9 @@ file_formater = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(me
 file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
 
+
 def load_csv(path: str) -> list:
+    """Чтение файла с расширением CSV"""
     try:
         if os.path.getsize(path) == 0:
             logger.warning(f"Файл {path} пустой")
@@ -28,6 +30,7 @@ def load_csv(path: str) -> list:
 
 
 def load_excel(path: str) -> list:
+    """Чтение файла с расширением XLSX"""
     try:
         df = pd.read_excel(path)
         result = df.to_dict('records')

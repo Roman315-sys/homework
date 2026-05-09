@@ -1,9 +1,10 @@
-import logging
 import json
+import logging
 import os
 
-from src.external_api import currency_conversion
 from dotenv import load_dotenv
+
+from src.external_api import currency_conversion
 
 load_dotenv()
 
